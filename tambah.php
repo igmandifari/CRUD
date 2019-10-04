@@ -1,10 +1,18 @@
 <?php 
+session_start();
+
+
+if (!isset($_SESSION["login"])){
+    header("Location: login.php");
+    exit;
+}
 require 'functions.php';
 // koneksi ke DBMS
 $conn = mysqli_connect("localhost", "root", "", "phpdasar");
 
 //cek apakah tombol submit sudah ditekan atau belum
 if(isset($_POST["submit"])){
+
 
     //cek apakah data berhasil ditambahkan atau tidak
     if(tambah($_POST)>0){
@@ -34,7 +42,7 @@ if(isset($_POST["submit"])){
 </head>
 <body>
     <h1>Tambah data mahasiswa</h1>
-        <form action="" method="post">
+        <form action="" method="post" enctype="multipart/form-data">
             <ul>
             <li>
                 <label for="nrp">NRP</label>
@@ -54,7 +62,7 @@ if(isset($_POST["submit"])){
             </li>
             <li>
                 <label for="gambar">Gambar</label>
-                <input type="text" name="gambar" id="gambar">
+                <input type="file" name="gambar" id="gambar">
             </li>
             <li>
                 <button type="submit" name="submit">Tambah Data</button>
