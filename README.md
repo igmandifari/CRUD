@@ -6,4 +6,4 @@ Web sederhana pengolah data mahasiswa
 - SESSION
 - COOKIE
 - PAGINATION
-- LIVE SERACH
+- LIVE SEARCH
